@@ -1,9 +1,12 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import { withAuthenticator } from "@aws-amplify/ui-react";
+import NavigationBar from "./components/NavBar/NavigationBar";
 
 function App() {
   return (
     <div className="App">
+      <NavigationBar />
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -22,4 +25,4 @@ function App() {
   );
 }
 
-export default App;
+export default withAuthenticator(App);
