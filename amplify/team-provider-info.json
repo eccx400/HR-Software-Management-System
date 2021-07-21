@@ -10,6 +10,11 @@
       "StackName": "amplify-orionhr-dev-143918",
       "StackId": "arn:aws:cloudformation:us-east-2:082565129730:stack/amplify-orionhr-dev-143918/58af0a40-ea03-11eb-8685-021611d0f3fe",
       "AmplifyAppId": "d1vvf48aif54dz"
+    },
+    "categories": {
+      "auth": {
+        "orionhr8b5b5d3e": {}
+      }
     }
   }
 }

@@ -1,1 +1,10 @@
-{}
+{
+  "auth": {
+    "orionhr8b5b5d3e": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
+  }
+}
