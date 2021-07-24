@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-orionhrms-dev-141052-authRole",
+      "UnauthRoleArn": "arn:aws:iam::082565129730:role/amplify-orionhrms-dev-141052-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::082565129730:role/amplify-orionhrms-dev-141052-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-orionhrms-dev-141052-deployment",
+      "UnauthRoleName": "amplify-orionhrms-dev-141052-unauthRole",
+      "StackName": "amplify-orionhrms-dev-141052",
+      "StackId": "arn:aws:cloudformation:us-east-2:082565129730:stack/amplify-orionhrms-dev-141052/deb815b0-ec5a-11eb-931f-06c578906b94",
+      "AmplifyAppId": "dn509950q5fj7"
+    },
+    "categories": {
+      "auth": {
+        "orionhrmscaa9d0c0": {}
+      }
+    }
+  }
+}

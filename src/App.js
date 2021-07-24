@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { HashRouter, Route, Switch } from 'react-router-dom'
 import './scss/style.scss'
 
+import { withAuthenticator } from '@aws-amplify/ui-react'
+
 const loading = (
   <div className="pt-3 text-center">
     <div className="sk-spinner sk-spinner-pulse"></div>
@@ -40,4 +42,4 @@ class App extends Component {
   }
 }
 
-export default App
+export default withAuthenticator(App)
