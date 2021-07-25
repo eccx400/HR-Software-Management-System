@@ -34,7 +34,6 @@ const AppSidebar = () => {
       }}
     >
       <CSidebarBrand className="d-none d-md-flex" to="/">
-        <CIcon className="sidebar-brand-narrow" name="sygnet" height={35} />
         ORION HRMS
       </CSidebarBrand>
       <CSidebarNav>
