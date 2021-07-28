@@ -10,7 +10,7 @@ Amplify.configure(awsconfig);
 Amplify.addPluggable(new AmazonAIPredictionsProvider());
 
 function App() {
-  const [response, setResponse] = useState("Please type some text");
+  const [response, setResponse] = useState("Sentiment Results");
   const [textToInterpret, setTextToInterpret] = useState("write some text here to interpret");
 
   function interpretFromPredictions() {
@@ -32,7 +32,7 @@ function App() {
   return (
     <div className="Text">
       <div>
-        <h3>Text interpretation</h3>
+        <h1>Text interpretation</h1>
         <input value={textToInterpret} onChange={setText}></input>
         <button onClick={interpretFromPredictions}>Interpret Sentiment</button>
         <p>{response}</p>
