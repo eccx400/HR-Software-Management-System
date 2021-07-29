@@ -11,7 +11,8 @@ import {
 import { Card, CardText, CardBody, CardTitle } from "reactstrap";
 import "./App.css";
 import { withAuthenticator, AmplifySignOut } from "@aws-amplify/ui-react";
-import Amplify, { Predictions } from "aws-amplify";
+import Amplify, { API, graphqlOperation, Predictions } from "aws-amplify";
+import { createEmployee } from "./graphql/mutations";
 import { AmazonAIPredictionsProvider } from "@aws-amplify/predictions";
 
 import awsconfig from "./aws-exports";
@@ -21,6 +22,9 @@ Amplify.addPluggable(new AmazonAIPredictionsProvider());
 
 function App() {
   const [response, setResponse] = useState("");
+  const [names] = useState("John Doe");
+  const [emails] = useState("johndoe@sjsu.edu");
+  const [analysis, setAnalysis] = useState("");
   const [textToInterpret, setTextToInterpret] = useState(
     "Please enter your suggestions here"
   );
@@ -42,6 +46,21 @@ function App() {
     setTextToInterpret(event.target.value);
   }
 
+  async function sendToDB(){
+    const todo = {
+      name: names,
+      email: emails,
+      description: textToInterpret,
+    };
+    return await API.graphql(graphqlOperation(createEmployee, { input: todo }));
+  }
+
+  const handleFormSubmit = (e) => {
+    let analysis = interpretFromPredictions();
+    setAnalysis(analysis);
+    sendToDB();
+  };
+
   return (
     <div className="Text">
       <div class="container-full-bg">
@@ -54,13 +73,13 @@ function App() {
               <br />
               <CardBody>
                 <Form>
-                  <FormGroup>
+                  <FormGroup onSubmit={handleFormSubmit}>
                     <Label for="exampleName">Name</Label>
-                    <Input type="name" name="name" id="name" placeholder="John Doe" />
+                    <Input type="name" placeholder= "John Doe" />
                   </FormGroup>
                   <FormGroup>
                     <Label for="exampleEmail">Email</Label>
-                    <Input type="email" name="email" id="email" placeholder="johndoe@sjsu.edu" />
+                    <Input type="email" placeholder= "johndoe@sjsu.edu" />
                   </FormGroup>
                   <FormGroup>
                     <Label for="exampleEmail">Suggestions</Label>
@@ -70,10 +89,10 @@ function App() {
                       value={textToInterpret}
                       onChange={setText}
                     />
-                    <br/>
+                    <br />
                     <Button
                       className="btn btn-secondary"
-                      onClick={interpretFromPredictions}
+                      onClick={handleFormSubmit}
                       size="lg"
                     >
                       Submit
@@ -83,7 +102,7 @@ function App() {
               </CardBody>
               <br />
               <CardText>
-                <h2 classname="text-center">{response}</h2>
+                <h2 className="text-center">{response}</h2>
               </CardText>
               <AmplifySignOut />
             </Card>

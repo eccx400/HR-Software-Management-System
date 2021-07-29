@@ -1,0 +1,11 @@
+{
+  "AppSyncApiName": "orionhr",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authorionhra6384fa1",
+      "Outputs.UserPoolId"
+    ]
+  }
+}
