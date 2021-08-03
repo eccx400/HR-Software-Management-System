@@ -10,6 +10,7 @@ import {
   CDropdownToggle,
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
+import { AmplifySignOut } from '@aws-amplify/ui-react'
 
 const AppHeaderDropdown = () => {
   return (
@@ -72,8 +73,7 @@ const AppHeaderDropdown = () => {
         </CDropdownItem>
         <CDropdownDivider />
         <CDropdownItem href="#">
-          <CIcon name="cil-lock-locked" className="me-2" />
-          Lock Account
+          <AmplifySignOut />
         </CDropdownItem>
       </CDropdownMenu>
     </CDropdown>

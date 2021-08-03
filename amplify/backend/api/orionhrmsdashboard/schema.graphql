@@ -1,0 +1,29 @@
+type S3Object @model {
+  bucket: String!
+  region: String!
+  key: String!
+}
+
+type Picture
+  @model
+  @auth(
+    rules: [
+      {
+        allow: groups
+        groups: ["Admin"]
+        queries: [get, list]
+        mutations: [create, update, delete]
+      }
+      { allow: owner, queries: [get, list], mutations: [create, update, delete] }
+    ]
+  ) {
+  id: ID!
+  name: String
+  tag: String
+  owner: String
+  paygrade: String
+  designation: String
+  lastActivity: String
+  empId: Int
+  department: String
+}

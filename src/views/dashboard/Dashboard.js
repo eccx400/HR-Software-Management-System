@@ -23,7 +23,7 @@ import { getStyle, hexToRgba } from '@coreui/utils'
 import CIcon from '@coreui/icons-react'
 
 const WidgetsDropdown = lazy(() => import('../components/widgets/WidgetsDropdown.js'))
-const WidgetsBrand = lazy(() => import('../components/widgets/WidgetsBrand.js'))
+//const WidgetsBrand = lazy(() => import('../components/widgets/WidgetsBrand.js'))
 
 const Dashboard = () => {
   const random = (min, max) => {
@@ -175,9 +175,6 @@ const Dashboard = () => {
           </CRow>
         </CCardFooter>
       </CCard>
-
-      <WidgetsBrand withCharts />
-
       <CRow>
         <CCol xs>
           <CCard className="mb-4">

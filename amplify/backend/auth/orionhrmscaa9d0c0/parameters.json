@@ -1,6 +1,6 @@
 {
     "identityPoolName": "orionhrmscaa9d0c0_identitypool_caa9d0c0",
-    "allowUnauthenticatedIdentities": false,
+    "allowUnauthenticatedIdentities": true,
     "resourceNameTruncated": "orionhcaa9d0c0",
     "userPoolName": "orionhrmscaa9d0c0_userpool_caa9d0c0",
     "autoVerifiedAttributes": [

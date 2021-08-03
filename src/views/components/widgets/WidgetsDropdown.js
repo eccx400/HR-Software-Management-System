@@ -104,13 +104,13 @@ const WidgetsDropdown = () => {
         <CWidgetDropdown
           className="mb-4"
           color="info"
-          value="$6.200"
+          value="40+"
           change={
             <>
               (40.9% <CIcon name="cil-arrow-top" />)
             </>
           }
-          title="Income"
+          title="Tickets"
           action={
             <CDropdown alignment="end">
               <CDropdownToggle color="transparent" caret={false} className="p-0">
@@ -209,7 +209,7 @@ const WidgetsDropdown = () => {
               (84.7% <CIcon name="cil-arrow-top" />)
             </>
           }
-          title="Conversion Rate"
+          title="Reminders"
           action={
             <CDropdown alignment="end">
               <CDropdownToggle color="transparent" caret={false} className="p-0">
@@ -274,13 +274,13 @@ const WidgetsDropdown = () => {
         <CWidgetDropdown
           className="mb-4"
           color="danger"
-          value="44K"
+          value="43"
           change={
             <>
               (-23.6% <CIcon name="cil-arrow-bottom" />)
             </>
           }
-          title="Sessions"
+          title="Notifications"
           action={
             <CDropdown alignment="end">
               <CDropdownToggle color="transparent" caret={false} className="p-0">
