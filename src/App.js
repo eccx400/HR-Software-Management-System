@@ -4,6 +4,7 @@ import {
   FormGroup,
   Label,
   Input,
+  CustomInput,
   Button,
   Jumbotron,
   Container,
@@ -23,8 +24,14 @@ Amplify.addPluggable(new AmazonAIPredictionsProvider());
 function App() {
   const [response, setResponse] = useState("");
   const [analysis, setAnalysis] = useState("");
-  const [names] = useState("John Doe");
-  const [emails] = useState("johndoe@sjsu.edu");
+  const [names, setName] = useState("");
+  const [emails, setEmail] = useState("");
+  const [positions, setPosition] = useState("");
+  const [purpose, setPurpose] = useState("");
+  const [workload, setWorkLoad] = useState("");
+  const [skills, setSkills] = useState("");
+  const [opportunities, setOpportunities] = useState("");
+  const [learn, setLearn] = useState("");
   const [textToInterpret, setTextToInterpret] = useState(
     "Please enter your suggestions here"
   );
@@ -39,10 +46,12 @@ function App() {
       },
     })
       .then((result) => {
-        setResponse(JSON.stringify(result.textInterpretation.sentiment, null, 2))
+        setResponse(
+          JSON.stringify(result.textInterpretation.sentiment, null, 2)
+        );
       })
       .catch((err) => {
-        setResponse(JSON.stringify(err, null, 2))
+        setResponse(JSON.stringify(err, null, 2));
       });
   }
 
@@ -50,7 +59,7 @@ function App() {
     setTextToInterpret(event.target.value);
   }
 
-  async function sendToDB(){
+  async function sendToDB() {
     const data = await Predictions.interpret({
       text: {
         source: {
@@ -58,17 +67,19 @@ function App() {
         },
         type: "ALL",
       },
-    })
+    });
     const todo = {
       name: names,
       email: emails,
-      description: data.textInterpretation.sentiment,
+      position: positions,
+      response: textToInterpret,
+      analysis: data.textInterpretation.sentiment,
     };
-    console.log(todo)
     return await API.graphql(graphqlOperation(createEmployee, { input: todo }));
   }
 
   const handleFormSubmit = (e) => {
+    e.preventDefault();
     interpretFromPredictions();
     sendToDB();
   };
@@ -84,14 +95,256 @@ function App() {
               </CardTitle>
               <br />
               <CardBody>
-                <Form>
-                  <FormGroup onSubmit={handleFormSubmit}>
+                <Form onSubmit={handleFormSubmit}>
+                  <FormGroup>
                     <Label for="exampleName">Name</Label>
-                    <Input type="name" placeholder= "John Doe" />
+                    <Input
+                      type="name"
+                      name="name"
+                      id="examplename"
+                      placeholder="John Doe"
+                      value={names}
+                      onChange={(e) => {
+                        setName(e.target.value);
+                      }}
+                    />
                   </FormGroup>
                   <FormGroup>
                     <Label for="exampleEmail">Email</Label>
-                    <Input type="email" placeholder= "johndoe@sjsu.edu" />
+                    <Input
+                      type="email"
+                      name="email"
+                      id="exampleEmail"
+                      placeholder="johndoe@sjsu.edu"
+                      value={emails}
+                      onChange={(e) => {
+                        setEmail(e.target.value);
+                      }}
+                    />
+                  </FormGroup>
+                  <FormGroup>
+                    <Label for="examplePosition">Position</Label>
+                    <Input
+                      type="position"
+                      name="position"
+                      id="exampleposition"
+                      placeholder="Research & Development"
+                      value={positions}
+                      onChange={(e) => {
+                        setPosition(e.target.value);
+                      }}
+                    />
+                  </FormGroup>
+                  <br />
+                  <p>
+                    <b>
+                      The following questions will discuss your employement
+                      experiences within the company. Please answer as
+                      truthfully as possible.
+                    </b>
+                  </p>
+                  <FormGroup>
+                    <Label for="exampleCheckbox">
+                      I find purpose in my work.
+                    </Label>
+                    <div>
+                      <CustomInput
+                        type="radio"
+                        id="exampleCustomRadio"
+                        name="customRadio"
+                        label="Strongly Agree"
+                        onChange={(e) => {
+                          setPurpose(e.target.value);
+                        }}
+                      />
+                      <CustomInput
+                        type="radio"
+                        id="exampleCustomRadio2"
+                        name="customRadio"
+                        label="Agree"
+                        onChange={(e) => {
+                          setPurpose(e.target.value);
+                        }}
+                      />
+                      <CustomInput
+                        type="radio"
+                        id="exampleCustomRadio2"
+                        name="customRadio"
+                        label="Neutral"
+                        onChange={(e) => {
+                          setPurpose(e.target.value);
+                        }}
+                      />
+                      <CustomInput
+                        type="radio"
+                        id="exampleCustomRadio"
+                        name="customRadio"
+                        label="Disagree"
+                        onChange={(e) => {
+                          setPurpose(e.target.value);
+                        }}
+                      />
+                      <CustomInput
+                        type="radio"
+                        id="exampleCustomRadio2"
+                        name="customRadio"
+                        label="Strongly Disagree"
+                        onChange={(e) => {
+                          setPurpose(e.target.value);
+                        }}
+                      />
+                    </div>
+                  </FormGroup>
+                  <FormGroup>
+                    <Label for="exampleCheckbox">
+                      My overall workload is managable.
+                    </Label>
+                    <div>
+                      <CustomInput
+                        type="radio"
+                        id="exampleCustomRadio"
+                        name="customRadio"
+                        label="Strongly Agree"
+                      />
+                      <CustomInput
+                        type="radio"
+                        id="exampleCustomRadio2"
+                        name="customRadio"
+                        label="Agree"
+                      />
+                      <CustomInput
+                        type="radio"
+                        id="exampleCustomRadio2"
+                        name="customRadio"
+                        label="Neutral"
+                      />
+                      <CustomInput
+                        type="radio"
+                        id="exampleCustomRadio"
+                        name="customRadio"
+                        label="Disagree"
+                      />
+                      <CustomInput
+                        type="radio"
+                        id="exampleCustomRadio2"
+                        name="customRadio"
+                        label="Strongly Disagree"
+                      />
+                    </div>
+                  </FormGroup>
+                  <FormGroup>
+                    <Label for="exampleCheckbox">
+                      This job allows me to use my skills and abilities
+                      effectively.
+                    </Label>
+                    <div>
+                      <CustomInput
+                        type="radio"
+                        id="exampleCustomRadio"
+                        name="customRadio"
+                        label="Strongly Agree"
+                      />
+                      <CustomInput
+                        type="radio"
+                        id="exampleCustomRadio2"
+                        name="customRadio"
+                        label="Agree"
+                      />
+                      <CustomInput
+                        type="radio"
+                        id="exampleCustomRadio2"
+                        name="customRadio"
+                        label="Neutral"
+                      />
+                      <CustomInput
+                        type="radio"
+                        id="exampleCustomRadio"
+                        name="customRadio"
+                        label="Disagree"
+                      />
+                      <CustomInput
+                        type="radio"
+                        id="exampleCustomRadio2"
+                        name="customRadio"
+                        label="Strongly Disagree"
+                      />
+                    </div>
+                  </FormGroup>
+                  <FormGroup>
+                    <Label for="exampleCheckbox">
+                      This job provides me with opportunities for promotions or
+                      career advancements within the company.
+                    </Label>
+                    <div>
+                      <CustomInput
+                        type="radio"
+                        id="exampleCustomRadio"
+                        name="customRadio"
+                        label="Strongly Agree"
+                      />
+                      <CustomInput
+                        type="radio"
+                        id="exampleCustomRadio2"
+                        name="customRadio"
+                        label="Agree"
+                      />
+                      <CustomInput
+                        type="radio"
+                        id="exampleCustomRadio2"
+                        name="customRadio"
+                        label="Neutral"
+                      />
+                      <CustomInput
+                        type="radio"
+                        id="exampleCustomRadio"
+                        name="customRadio"
+                        label="Disagree"
+                      />
+                      <CustomInput
+                        type="radio"
+                        id="exampleCustomRadio2"
+                        name="customRadio"
+                        label="Strongly Disagree"
+                      />
+                    </div>
+                  </FormGroup>
+                  <FormGroup>
+                    <Label for="exampleCheckbox">
+                      This job allows me to learn new skills and develop
+                      professionally.
+                    </Label>
+                    <div>
+                      <CustomInput
+                        type="radio"
+                        id="exampleCustomRadio"
+                        name="customRadio"
+                        label="Strongly Agree"
+                      />
+                      <CustomInput
+                        type="radio"
+                        id="exampleCustomRadio2"
+                        name="customRadio"
+                        label="Agree"
+                      />
+                      <CustomInput
+                        type="radio"
+                        id="exampleCustomRadio2"
+                        name="customRadio"
+                        label="Neutral"
+                      />
+                      <CustomInput
+                        type="radio"
+                        id="exampleCustomRadio"
+                        name="customRadio"
+                        label="Disagree"
+                      />
+                      <CustomInput
+                        type="radio"
+                        id="exampleCustomRadio2"
+                        name="customRadio"
+                        label="Strongly Disagree"
+                      />
+                    </div>
                   </FormGroup>
                   <FormGroup>
                     <Label for="exampleSuggestions">Suggestions</Label>
@@ -101,8 +354,9 @@ function App() {
                       value={textToInterpret}
                       onChange={setText}
                     />
-                    <br />
+                    <br/>
                     <Button
+                      type="submit"
                       className="btn btn-secondary"
                       onClick={handleFormSubmit}
                       size="lg"

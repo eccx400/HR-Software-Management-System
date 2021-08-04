@@ -10,7 +10,9 @@ export const createEmployee = /* GraphQL */ `
       id
       name
       email
-      description
+      position
+      response
+      analysis
       createdAt
       updatedAt
     }
@@ -25,7 +27,9 @@ export const updateEmployee = /* GraphQL */ `
       id
       name
       email
-      description
+      position
+      response
+      analysis
       createdAt
       updatedAt
     }
@@ -40,7 +44,9 @@ export const deleteEmployee = /* GraphQL */ `
       id
       name
       email
-      description
+      position
+      response
+      analysis
       createdAt
       updatedAt
     }

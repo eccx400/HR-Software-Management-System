@@ -2,5 +2,7 @@ type Employee @model {
   id: ID!
   name: String!
   email: String!
-  description: String
+  position: String!
+  response: String
+  analysis: String
 }

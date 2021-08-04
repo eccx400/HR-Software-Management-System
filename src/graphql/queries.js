@@ -7,7 +7,9 @@ export const getEmployee = /* GraphQL */ `
       id
       name
       email
-      description
+      position
+      response
+      analysis
       createdAt
       updatedAt
     }
@@ -24,7 +26,9 @@ export const listEmployees = /* GraphQL */ `
         id
         name
         email
-        description
+        position
+        response
+        analysis
         createdAt
         updatedAt
       }
