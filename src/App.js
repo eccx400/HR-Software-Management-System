@@ -22,6 +22,7 @@ Amplify.addPluggable(new AmazonAIPredictionsProvider());
 
 function App() {
   const [response, setResponse] = useState("");
+  const [analysis, setAnalysis] = useState("");
   const [names] = useState("John Doe");
   const [emails] = useState("johndoe@sjsu.edu");
   const [textToInterpret, setTextToInterpret] = useState(
@@ -38,7 +39,6 @@ function App() {
       },
     })
       .then((result) => {
-        console.log(result.textInterpretation.sentiment)
         setResponse(JSON.stringify(result.textInterpretation.sentiment, null, 2))
       })
       .catch((err) => {
@@ -51,13 +51,21 @@ function App() {
   }
 
   async function sendToDB(){
+    const data = await Predictions.interpret({
+      text: {
+        source: {
+          text: textToInterpret,
+        },
+        type: "ALL",
+      },
+    })
     const todo = {
       name: names,
       email: emails,
-      description: response,
+      description: data.textInterpretation.sentiment,
     };
-    console.log(response)
-    //return await API.graphql(graphqlOperation(createEmployee, { input: todo }));
+    console.log(todo)
+    return await API.graphql(graphqlOperation(createEmployee, { input: todo }));
   }
 
   const handleFormSubmit = (e) => {
