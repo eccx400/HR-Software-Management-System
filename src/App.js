@@ -24,7 +24,6 @@ function App() {
   const [response, setResponse] = useState("");
   const [names] = useState("John Doe");
   const [emails] = useState("johndoe@sjsu.edu");
-  const [analysis, setAnalysis] = useState("");
   const [textToInterpret, setTextToInterpret] = useState(
     "Please enter your suggestions here"
   );
@@ -38,8 +37,13 @@ function App() {
         type: "ALL",
       },
     })
-      .then((result) => setResponse(JSON.stringify(result, null, 2)))
-      .catch((err) => setResponse(JSON.stringify(err, null, 2)));
+      .then((result) => {
+        console.log(result.textInterpretation.sentiment)
+        setResponse(JSON.stringify(result.textInterpretation.sentiment, null, 2))
+      })
+      .catch((err) => {
+        setResponse(JSON.stringify(err, null, 2))
+      });
   }
 
   function setText(event) {
@@ -50,14 +54,14 @@ function App() {
     const todo = {
       name: names,
       email: emails,
-      description: textToInterpret,
+      description: response,
     };
-    return await API.graphql(graphqlOperation(createEmployee, { input: todo }));
+    console.log(response)
+    //return await API.graphql(graphqlOperation(createEmployee, { input: todo }));
   }
 
   const handleFormSubmit = (e) => {
-    let analysis = interpretFromPredictions();
-    setAnalysis(analysis);
+    interpretFromPredictions();
     sendToDB();
   };
 
@@ -82,7 +86,7 @@ function App() {
                     <Input type="email" placeholder= "johndoe@sjsu.edu" />
                   </FormGroup>
                   <FormGroup>
-                    <Label for="exampleEmail">Suggestions</Label>
+                    <Label for="exampleSuggestions">Suggestions</Label>
                     <Input
                       addonType="append"
                       type="textarea"
