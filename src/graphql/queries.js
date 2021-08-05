@@ -44,6 +44,7 @@ export const getPicture = /* GraphQL */ `
       lastActivity
       empId
       department
+      joiningDate
       createdAt
       updatedAt
     }
@@ -66,6 +67,114 @@ export const listPictures = /* GraphQL */ `
         lastActivity
         empId
         department
+        joiningDate
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getTickets = /* GraphQL */ `
+  query GetTickets($id: ID!) {
+    getTickets(id: $id) {
+      id
+      createdby
+      priority
+      subject
+      category
+      feedback
+      body
+      createdon
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listTicketss = /* GraphQL */ `
+  query ListTicketss(
+    $filter: ModelTicketsFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listTicketss(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        createdby
+        priority
+        subject
+        category
+        feedback
+        body
+        createdon
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getReminders = /* GraphQL */ `
+  query GetReminders($id: ID!) {
+    getReminders(id: $id) {
+      id
+      createdby
+      priority
+      subject
+      category
+      createdon
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listReminderss = /* GraphQL */ `
+  query ListReminderss(
+    $filter: ModelRemindersFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listReminderss(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        createdby
+        priority
+        subject
+        category
+        createdon
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getMeetings = /* GraphQL */ `
+  query GetMeetings($id: ID!) {
+    getMeetings(id: $id) {
+      id
+      createdon
+      subject
+      Category
+      ScheduledOn
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listMeetingss = /* GraphQL */ `
+  query ListMeetingss(
+    $filter: ModelMeetingsFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listMeetingss(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        createdon
+        subject
+        Category
+        ScheduledOn
         createdAt
         updatedAt
       }

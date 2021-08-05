@@ -3,7 +3,7 @@ import React from 'react'
 // examples
 
 const Colors = React.lazy(() => import('./views/theme/colors/Colors'))
-const Typography = React.lazy(() => import('./views/theme/typography/Typography'))
+const Typography = React.lazy(() => import('./views/theme/typography/Typography2'))
 
 const Accordion = React.lazy(() => import('./views/components/base/accordion/Accordion'))
 const Breadcrumbs = React.lazy(() => import('./views/components/base/breadcrumbs/Breadcrumbs'))

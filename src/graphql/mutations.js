@@ -61,6 +61,7 @@ export const createPicture = /* GraphQL */ `
       lastActivity
       empId
       department
+      joiningDate
       createdAt
       updatedAt
     }
@@ -81,6 +82,7 @@ export const updatePicture = /* GraphQL */ `
       lastActivity
       empId
       department
+      joiningDate
       createdAt
       updatedAt
     }
@@ -101,6 +103,163 @@ export const deletePicture = /* GraphQL */ `
       lastActivity
       empId
       department
+      joiningDate
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const createTickets = /* GraphQL */ `
+  mutation CreateTickets(
+    $input: CreateTicketsInput!
+    $condition: ModelTicketsConditionInput
+  ) {
+    createTickets(input: $input, condition: $condition) {
+      id
+      createdby
+      priority
+      subject
+      category
+      feedback
+      body
+      createdon
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateTickets = /* GraphQL */ `
+  mutation UpdateTickets(
+    $input: UpdateTicketsInput!
+    $condition: ModelTicketsConditionInput
+  ) {
+    updateTickets(input: $input, condition: $condition) {
+      id
+      createdby
+      priority
+      subject
+      category
+      feedback
+      body
+      createdon
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteTickets = /* GraphQL */ `
+  mutation DeleteTickets(
+    $input: DeleteTicketsInput!
+    $condition: ModelTicketsConditionInput
+  ) {
+    deleteTickets(input: $input, condition: $condition) {
+      id
+      createdby
+      priority
+      subject
+      category
+      feedback
+      body
+      createdon
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const createReminders = /* GraphQL */ `
+  mutation CreateReminders(
+    $input: CreateRemindersInput!
+    $condition: ModelRemindersConditionInput
+  ) {
+    createReminders(input: $input, condition: $condition) {
+      id
+      createdby
+      priority
+      subject
+      category
+      createdon
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateReminders = /* GraphQL */ `
+  mutation UpdateReminders(
+    $input: UpdateRemindersInput!
+    $condition: ModelRemindersConditionInput
+  ) {
+    updateReminders(input: $input, condition: $condition) {
+      id
+      createdby
+      priority
+      subject
+      category
+      createdon
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteReminders = /* GraphQL */ `
+  mutation DeleteReminders(
+    $input: DeleteRemindersInput!
+    $condition: ModelRemindersConditionInput
+  ) {
+    deleteReminders(input: $input, condition: $condition) {
+      id
+      createdby
+      priority
+      subject
+      category
+      createdon
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const createMeetings = /* GraphQL */ `
+  mutation CreateMeetings(
+    $input: CreateMeetingsInput!
+    $condition: ModelMeetingsConditionInput
+  ) {
+    createMeetings(input: $input, condition: $condition) {
+      id
+      createdon
+      subject
+      Category
+      ScheduledOn
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateMeetings = /* GraphQL */ `
+  mutation UpdateMeetings(
+    $input: UpdateMeetingsInput!
+    $condition: ModelMeetingsConditionInput
+  ) {
+    updateMeetings(input: $input, condition: $condition) {
+      id
+      createdon
+      subject
+      Category
+      ScheduledOn
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteMeetings = /* GraphQL */ `
+  mutation DeleteMeetings(
+    $input: DeleteMeetingsInput!
+    $condition: ModelMeetingsConditionInput
+  ) {
+    deleteMeetings(input: $input, condition: $condition) {
+      id
+      createdon
+      subject
+      Category
+      ScheduledOn
       createdAt
       updatedAt
     }

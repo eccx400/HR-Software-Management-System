@@ -4,23 +4,35 @@ import classNames from 'classnames'
 import { CRow, CCol, CCard, CCardHeader, CCardBody } from '@coreui/react'
 import { rgbToHex } from '@coreui/utils'
 import { DocsLink } from 'src/reusable'
+import { API, graphqlOperation } from 'aws-amplify'
+import { listMeetingss } from '../../../graphql/queries'
 
 const ThemeView = () => {
   const [color, setColor] = useState('rgb(255, 255, 255)')
   const ref = createRef()
+  const [meetings, setMeetings] = useState('')
 
   useEffect(() => {
     const el = ref.current.parentNode.firstChild
     const varColor = window.getComputedStyle(el).getPropertyValue('background-color')
     setColor(varColor)
-  }, [ref])
+    getAllMeetingsDataToState()
+  }, [])
+
+  const getAllMeetingsDataToState = async () => {
+    const result = await API.graphql(graphqlOperation(listMeetingss))
+    const newResult = result.data.listMeetingss
+    console.log('inside Meetings', result.data.listMeetingss)
+    setMeetings(newResult)
+    console.log('meets', meetings)
+  }
 
   return (
     <table className="table w-100" ref={ref}>
       <tbody>
         <tr>
           <td className="text-medium-emphasis">HEX:</td>
-          <td className="font-weight-bold">{rgbToHex(color)}</td>
+          <td className="font-weight-bold"> </td>
         </tr>
         <tr>
           <td className="text-medium-emphasis">RGB:</td>
@@ -52,10 +64,10 @@ const Colors = () => {
     <>
       <CCard className="mb-4">
         <CCardHeader>
-          Theme colors
-          <DocsLink href="https://coreui.io/docs/utilities/colors/" />
+          UpComing Meetings
+          <DocsLink href="https://aws.amazon.com/chime/?chime-blog-posts.sort-by=item.additionalFields.createdDate&chime-blog-posts.sort-order=desc" />
         </CCardHeader>
-        <CCardBody>
+        {/* <CCardBody>
           <CRow>
             <ThemeColor className="bg-primary">
               <h6>Brand Primary Color</h6>
@@ -82,7 +94,7 @@ const Colors = () => {
               <h6>Brand Dark Color</h6>
             </ThemeColor>
           </CRow>
-        </CCardBody>
+        </CCardBody> */}
       </CCard>
     </>
   )

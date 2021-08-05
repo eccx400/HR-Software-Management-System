@@ -1,33 +1,9 @@
-import React, { useState, useEffect, lazy } from 'react'
-import { Storage, API, graphqlOperation } from 'aws-amplify'
-import { createPicture } from '../../../graphql/mutations'
+import React, { useState, useEffect } from 'react'
+import { API, graphqlOperation } from 'aws-amplify'
 import { listPictures } from '../../../graphql/queries'
-// import Predictions from '@aws-amplify/predictions'
-import awsExports from '../../../aws-exports'
-
 import UploadEmployees from './UploadEmployees'
+import EmployeeTable from './EmployeeTable'
 
-import {
-  CAvatar,
-  CButton,
-  CButtonGroup,
-  CCard,
-  CCardBody,
-  CCardFooter,
-  CCardHeader,
-  CCol,
-  CProgress,
-  CRow,
-  CTable,
-  CTableBody,
-  CTableDataCell,
-  CTableHead,
-  CTableHeaderCell,
-  CTableRow,
-} from '@coreui/react'
-import { CChartLine } from '@coreui/react-chartjs'
-import { getStyle, hexToRgba } from '@coreui/utils'
-import CIcon from '@coreui/icons-react'
 function Employees(props) {
   const [inidata] = ''
   const [empdata, setEmpdata] = useState([])
@@ -41,10 +17,10 @@ function Employees(props) {
     console.log('inside before build 1', result)
     // let imageArray = await buildImageArray(result.data.listPictures.items);
     // setImages(imageArray);
-    setEmpdata(result)
+    //setEmpdata(result)
     let empArray = await buildEmpArray(result.data.listPictures.items)
     setEmpdata(empArray)
-    console.log('empdattattata', empdata)
+    console.log('insideeee employeee', empdata)
   }
 
   const buildEmpArray = async (listPictures) => {
@@ -62,66 +38,21 @@ function Employees(props) {
     console.log('getOneFormatedImage', emp)
     return {
       //src: await Storage.get(image.file.key),
-      id: emp.id,
-      owner: emp.owner,
+      id: emp.empId,
       tag: emp.tag,
+      employeeName: emp.name,
+      department: emp.department,
+      designation: emp.designation,
+      payGrade: emp.paygrade,
+      activity: emp.lastActivity,
+      joiningDate: emp.joiningDate,
     }
   }
 
+  console.log('empdatazzzzz', empdata)
   return (
     <div>
-      <UploadEmployees />
-
-      <CTable hover responsive align="middle" className="mb-0 border">
-        <CTableHead color="light">
-          <CTableRow>
-            <CTableHeaderCell className="text-center">
-              <CIcon name="cil-people" />
-            </CTableHeaderCell>
-            <CTableHeaderCell>EmployeeName</CTableHeaderCell>
-            <CTableHeaderCell>EmpId</CTableHeaderCell>
-            <CTableHeaderCell className="text-center">Department</CTableHeaderCell>
-            <CTableHeaderCell>Designation</CTableHeaderCell>
-            <CTableHeaderCell className="text-center">Pay Grade</CTableHeaderCell>
-            <CTableHeaderCell>Activity</CTableHeaderCell>
-          </CTableRow>
-        </CTableHead>
-        <CTableBody>
-          <CTableRow>
-            <CTableDataCell className="text-center">
-              <CAvatar size="md" src="/avatars/1.jpg" status="success" />
-            </CTableDataCell>
-            <CTableDataCell>
-              <div>Yiorgos Avraamu</div>
-              <div className="small text-medium-emphasis">
-                <span>New</span> | Joined: Jan 1, 2015
-              </div>
-            </CTableDataCell>
-            <CTableDataCell>
-              <p>11111</p>
-            </CTableDataCell>
-            <CTableDataCell className="text-center">
-              <CIcon size="xl" name="cif-us" title="us" id="us" />
-              <p>Tech</p>
-            </CTableDataCell>
-            <CTableDataCell>
-              <div className="clearfix">
-                <div>
-                  <p> SDE1</p>
-                </div>
-              </div>
-            </CTableDataCell>
-            <CTableDataCell className="text-center">
-              <CIcon size="xl" name="cib-cc-mastercard" />
-              <p>A</p>
-            </CTableDataCell>
-            <CTableDataCell>
-              <div className="small text-medium-emphasis">Last login</div>
-              <strong>10 sec ago</strong>
-            </CTableDataCell>
-          </CTableRow>
-        </CTableBody>
-      </CTable>
+      <EmployeeTable emptable={empdata} />
     </div>
   )
 }
