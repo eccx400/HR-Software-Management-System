@@ -153,45 +153,30 @@ function App() {
                         id="exampleCustomRadio"
                         name="customRadio"
                         label="Strongly Agree"
-                        onChange={(e) => {
-                          setPurpose(e.target.value);
-                        }}
                       />
                       <CustomInput
                         type="radio"
-                        id="exampleCustomRadio2"
+                        id="exampleCustomRadio"
                         name="customRadio"
                         label="Agree"
-                        onChange={(e) => {
-                          setPurpose(e.target.value);
-                        }}
                       />
                       <CustomInput
                         type="radio"
-                        id="exampleCustomRadio2"
+                        id="exampleCustomRadio"
                         name="customRadio"
                         label="Neutral"
-                        onChange={(e) => {
-                          setPurpose(e.target.value);
-                        }}
                       />
                       <CustomInput
                         type="radio"
                         id="exampleCustomRadio"
                         name="customRadio"
                         label="Disagree"
-                        onChange={(e) => {
-                          setPurpose(e.target.value);
-                        }}
                       />
                       <CustomInput
                         type="radio"
-                        id="exampleCustomRadio2"
+                        id="exampleCustomRadio"
                         name="customRadio"
                         label="Strongly Disagree"
-                        onChange={(e) => {
-                          setPurpose(e.target.value);
-                        }}
                       />
                     </div>
                   </FormGroup>
@@ -208,13 +193,13 @@ function App() {
                       />
                       <CustomInput
                         type="radio"
-                        id="exampleCustomRadio2"
+                        id="exampleCustomRadio"
                         name="customRadio"
                         label="Agree"
                       />
                       <CustomInput
                         type="radio"
-                        id="exampleCustomRadio2"
+                        id="exampleCustomRadio"
                         name="customRadio"
                         label="Neutral"
                       />
@@ -226,7 +211,7 @@ function App() {
                       />
                       <CustomInput
                         type="radio"
-                        id="exampleCustomRadio2"
+                        id="exampleCustomRadio"
                         name="customRadio"
                         label="Strongly Disagree"
                       />
@@ -246,13 +231,13 @@ function App() {
                       />
                       <CustomInput
                         type="radio"
-                        id="exampleCustomRadio2"
+                        id="exampleCustomRadio"
                         name="customRadio"
                         label="Agree"
                       />
                       <CustomInput
                         type="radio"
-                        id="exampleCustomRadio2"
+                        id="exampleCustomRadio"
                         name="customRadio"
                         label="Neutral"
                       />
@@ -264,7 +249,7 @@ function App() {
                       />
                       <CustomInput
                         type="radio"
-                        id="exampleCustomRadio2"
+                        id="exampleCustomRadio"
                         name="customRadio"
                         label="Strongly Disagree"
                       />
@@ -284,13 +269,13 @@ function App() {
                       />
                       <CustomInput
                         type="radio"
-                        id="exampleCustomRadio2"
+                        id="exampleCustomRadio"
                         name="customRadio"
                         label="Agree"
                       />
                       <CustomInput
                         type="radio"
-                        id="exampleCustomRadio2"
+                        id="exampleCustomRadio"
                         name="customRadio"
                         label="Neutral"
                       />
@@ -302,7 +287,7 @@ function App() {
                       />
                       <CustomInput
                         type="radio"
-                        id="exampleCustomRadio2"
+                        id="exampleCustomRadio"
                         name="customRadio"
                         label="Strongly Disagree"
                       />
@@ -322,13 +307,13 @@ function App() {
                       />
                       <CustomInput
                         type="radio"
-                        id="exampleCustomRadio2"
+                        id="exampleCustomRadio"
                         name="customRadio"
                         label="Agree"
                       />
                       <CustomInput
                         type="radio"
-                        id="exampleCustomRadio2"
+                        id="exampleCustomRadio"
                         name="customRadio"
                         label="Neutral"
                       />
@@ -340,7 +325,7 @@ function App() {
                       />
                       <CustomInput
                         type="radio"
-                        id="exampleCustomRadio2"
+                        id="exampleCustomRadio"
                         name="customRadio"
                         label="Strongly Disagree"
                       />
